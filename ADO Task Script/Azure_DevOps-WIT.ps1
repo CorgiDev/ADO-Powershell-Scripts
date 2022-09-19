@@ -62,8 +62,9 @@ $workItems | ForEach-Object {
 }
 
 $itemCount = $newWorkItems.Count
-$currentTime = get-date -f yyyy-MM-dd
+$currentTime = get-date -f "MM-dd-yyyy (HH-mm)"
 $newWorkItems | Out-File -FilePath ".\Reports\New-Work-Items-$currentTime.txt"
 Write-Output "$itemCount work items were created in the $organizationName Azure DevOps."
 
+# Keeps script window from automatically closing upon finish in case you want to review the output.
 Read-Host -Prompt "Press Enter to exit"
