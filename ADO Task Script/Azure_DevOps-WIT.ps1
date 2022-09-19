@@ -2,9 +2,9 @@
 # Variables
 ############################################
 $organizationName = "ORG NAME PLACEHOLDER"
-$projectName = "PROJECT NAME PLACEHOLDER"
 $orgURL = "https://dev.azure.com/$organizationName/"
 $sprint = "Sprint 20"
+$projectName = "PROJECT NAME PLACEHOLDER"
 
 ############################################
 # Connect to Azure DevOps Instance with PAT
