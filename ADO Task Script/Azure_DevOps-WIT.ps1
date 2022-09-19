@@ -1,7 +1,6 @@
 ﻿############################################
 # Variables
 ############################################
-$azPAT = "PLACEHOLDER FOR ACTUAL TOKEN"
 $organizationName = "ORG NAME PLACEHOLDER"
 $projectName = "PROJECT NAME PLACEHOLDER"
 $orgURL = "https://dev.azure.com/$organizationName/"
