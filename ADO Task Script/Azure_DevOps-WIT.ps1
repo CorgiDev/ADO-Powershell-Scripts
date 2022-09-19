@@ -1,10 +1,4 @@
 ﻿############################################
-# Make sure Azure CLI and Azure DevOps
-# extension updated
-############################################
-# az upgrade
-
-############################################
 # Variables
 ############################################
 $azPAT = "PLACEHOLDER FOR ACTUAL TOKEN"
@@ -16,7 +10,7 @@ $sprint = "Sprint 20"
 ############################################
 # Connect to Azure DevOps Instance with PAT
 ############################################
-Write-Output $azPAT | devops login --organization $orgURL
+az devops login --organization $orgURL
 #az login
 
 ############################################
@@ -62,19 +56,15 @@ $workItems | ForEach-Object {
     # TODO: Assign it to its parent epic
     az boards work-item relation add --id $newWitID --relation-type parent --target-id $parent
 
-   $resultJson | Out-File -FilePath "resultJson-$newWitID.json"
-   $callResult | Out-File -FilePath "callResult-$newWitID.txt"
-
    $singleNewWIT = @(
-      [pscustomobject]@{WorkItemID=$newWitID;Type=$type;Title=$title;Area=$area;Sprint=$sprint}
+      [pscustomobject]@{WorkItemID=$newWitID;Type=$type;Title=$title;Iteration=$iteration}
    )
    $newWorkItems.Add($singleNewWIT)
 }
 
 $itemCount = $newWorkItems.Count
 $currentTime = get-date -f yyyy-MM-dd
-$newWorkItems | Out-File -FilePath "New-Work-Items-$currentTime.txt"
-Write-Output "The following $itemCount work items were created in the $organizationName Azure DevOps:"
-$newWorkItems
+$newWorkItems | Out-File -FilePath ".\Reports\New-Work-Items-$currentTime.txt"
+Write-Output "$itemCount work items were created in the $organizationName Azure DevOps."
 
 Read-Host -Prompt "Press Enter to exit"
