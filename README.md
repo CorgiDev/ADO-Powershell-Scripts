@@ -45,3 +45,7 @@ MachinePolicy       Undefined
 We want to enable scripts to run, so we are going to use `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser` to accomplish that.
 
 After running the command, you can confirm the changes by running `Get-ExecutionPolicy -List` again. You should see the `CurrentUser` value update to `Unrestricted`.
+
+## Additional Resources
+
+- [Azure DevOps Fields](https://learn.microsoft.com/en-us/rest/api/azure/devops/wit/fields/list?view=azure-devops-rest-6.0&tabs=HTTP&viewFallbackFrom=azure-devops-rest-7.0)
