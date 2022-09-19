@@ -11,6 +11,9 @@
 *.sln.docstates
 Redacted.txt
 field stuff.ps1
+callResult*
+New-Work-Item*
+resultJson*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
