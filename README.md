@@ -12,8 +12,9 @@ You must do the following before you can successfully run this script:
     1. https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
 2. Install the Azure DevOps Powershell Extension using the following command in Powershell:
     1. `az extension add --upgrade -n azure-devops`
-3. Get a PAT from Azure DevOps that has the ability to read/write/manage work items in the project you wish to manage.
-4. Run `az upgrade` command in Powershell to make sure everything is updated appropriately.
+3. Run `az upgrade` command in Powershell to make sure everything is updated appropriately.
+4. Get a PAT from Azure DevOps that has the ability to read/write/manage work items in the project you wish to manage.
+5. Enable running scripts if necessary. See Troubleshooting section for more details.
 
 ## Troubleshooting
 
