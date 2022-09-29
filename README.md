@@ -1,5 +1,5 @@
-# ADO_Powershell_Fun
-Powershell scripts for doing stuff in ADO.
+# ADO Powershell Scripts
+Powershell scripts for doing stuff in Azure DevOps (ADO).
 
 ## Azure_DevOps-WIT.ps1
 
