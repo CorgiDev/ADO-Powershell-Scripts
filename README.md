@@ -1,8 +1,9 @@
-# ADO_Powershell_Fun
-Powershell scripts for doing stuff in ADO.
+# ADO Powershell Scripts
+Powershell scripts for doing stuff in Azure DevOps (ADO).
 
-## Azure_DevOps-WIT.ps1
+## ADO Task Script
 
+- **Filenname:** Azure_DevOps-WIT.ps1
 - **Purpose:** This script for creating some tasks in Azure DevOps.
 
 ### Pre-requisites
