@@ -38,20 +38,20 @@ $newWorkItems=New-Object System.Collections.ArrayList
 ############################################
 # TODO: Iterate through array of work items
 $workItems | ForEach-Object {
-    # Temporary variables
-    $type =$_.Type 
-    $title=$_.Title
-    $description = $_.Description
-    $activity=$_.Activity
-    $area=$_.Area
-    $iteration=$_.Iteration
-    $assignedTo=$_.AssignedTo
-    $parent=$_.Parent
+   # Temporary variables
+   $type =$_.Type 
+   $title=$_.Title
+   $description = $_.Description
+   $activity=$_.Activity
+   $iteration=$_.Iteration
+   $assignedTo=$_.AssignedTo
+   $parent=$_.Parent
+   $project = $_.Area
 
-    # TODO: Create the work item
-    $resultJson = az boards work-item create --project $projectName --title $title --type $type --description $description --organization $orgURL --fields "Microsoft.VSTS.Common.Activity=$activity" "System.AreaPath=$area" "System.IterationPath=$iteration" "System.AssignedTo=$assignedTo"
-    $callResult = $resultJson | ConvertFrom-Json
-    $newWitID = $callResult.id
+   # TODO: Create the work item
+   $resultJson = az boards work-item create --project $project --title $title --type $type --description $description --organization $orgURL --fields "Microsoft.VSTS.Common.Activity=$activity" "System.AreaPath=$project" "System.IterationPath=$iteration" "System.AssignedTo=$assignedTo"
+   $callResult = $resultJson | ConvertFrom-Json
+   $newWitID = $callResult.id
 
     # TODO: Assign it to its parent epic
     az boards work-item relation add --id $newWitID --relation-type parent --target-id $parent
