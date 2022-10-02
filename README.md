@@ -47,6 +47,8 @@ We want to enable scripts to run, so we are going to use `Set-ExecutionPolicy -E
 
 After running the command, you can confirm the changes by running `Get-ExecutionPolicy -List` again. You should see the `CurrentUser` value update to `Unrestricted`.
 
+It is recommended that you set it back to `Undefined` when you are done running scripts. This helps make it more difficult for malicious scripts to run without your knowledge.
+
 ## Additional Resources
 
 - [Azure DevOps Fields](https://learn.microsoft.com/en-us/rest/api/azure/devops/wit/fields/list?view=azure-devops-rest-6.0&tabs=HTTP&viewFallbackFrom=azure-devops-rest-7.0)
