@@ -10,13 +10,13 @@ $projectName = "PROJECT NAME PLACEHOLDER"
 # Connect to Azure DevOps Instance with PAT
 ############################################
 az devops login --organization $orgURL
-#az login
 
 ############################################
 # Work Item Arrays
 ############################################
 # New work items you want to create
 $workItems = @(
+   # Start of Work Items that will be created #
    [pscustomobject]@{Type="Issue";Title="Test Issue 1";Description="<div>Test Issue description.</div>";Activity="";Area=$projectName;Iteration="$projectName\$sprint";AssignedTo="[Name Placeholder]";Parent="[Parent Number Placeholder]"}
    [pscustomobject]@{Type="Issue";Title="Test Issue 2";Description="<div>Test Issue description.</div>";Activity="";Area=$projectName;Iteration="$projectName\$sprint";AssignedTo="[Name Placeholder]";Parent="[Parent Number Placeholder]"}
    [pscustomobject]@{Type="Issue";Title="Test Issue 3";Description="<div>Test Issue description.</div>";Activity="";Area=$projectName;Iteration="$projectName\$sprint";AssignedTo="[Name Placeholder]";Parent="[Parent Number Placeholder]"}
@@ -26,6 +26,7 @@ $workItems = @(
    [pscustomobject]@{Type="Issue";Title="Test Issue 7";Description="<div>Test Issue description.</div>";Activity="";Area=$projectName;Iteration="$projectName\$sprint";AssignedTo="[Name Placeholder]";Parent="[Parent Number Placeholder]"}
    [pscustomobject]@{Type="Issue";Title="Test Issue 8";Description="<div>Test Issue description.</div>";Activity="";Area=$projectName;Iteration="$projectName\$sprint";AssignedTo="[Name Placeholder]";Parent="[Parent Number Placeholder]"}
    [pscustomobject]@{Type="Issue";Title="Test Issue 9";Description="<div>Test Issue description.</div>";Activity="";Area=$projectName;Iteration="$projectName\$sprint";AssignedTo="[Name Placeholder]";Parent="[Parent Number Placeholder]"}
+   # End of Work Items that will be created #
 )
 
 # Blank array that we will use to create a list to print out later.
