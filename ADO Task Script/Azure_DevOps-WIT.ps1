@@ -36,7 +36,7 @@ $newWorkItems=New-Object System.Collections.ArrayList
 # Begin Work Item Creation and Relate to
 # Parent Work Item
 ############################################
-# TODO: Iterate through array of work items
+# Iterate through array of work items
 $workItems | ForEach-Object {
    # Temporary variables
    $type =$_.Type 
@@ -48,24 +48,36 @@ $workItems | ForEach-Object {
    $parent=$_.Parent
    $project = $_.Area
 
-   # TODO: Create the work item
+   # Create the work item
    $resultJson = az boards work-item create --project $project --title $title --type $type --description $description --organization $orgURL --fields "Microsoft.VSTS.Common.Activity=$activity" "System.AreaPath=$project" "System.IterationPath=$iteration" "System.AssignedTo=$assignedTo"
+   
+   # Capture info from creation
    $callResult = $resultJson | ConvertFrom-Json
+   # Set the new work item ID to a variable I can use to assign the parent.
    $newWitID = $callResult.id
 
-    # TODO: Assign it to its parent epic
-    az boards work-item relation add --id $newWitID --relation-type parent --target-id $parent
+   # Associate the new work item to its parent epic
+   az boards work-item relation add --id $newWitID --relation-type parent --target-id $parent
 
+   # Create an object out of the info of the new Work Item
    $singleNewWIT = @(
       [pscustomobject]@{WorkItemID=$newWitID;Type=$type;Title=$title;Iteration=$iteration}
    )
+
+   # Add the new work item object to the list
    $newWorkItems.Add($singleNewWIT)
 }
 
 $itemCount = $newWorkItems.Count
+
 $currentTime = get-date -f "MM-dd-yyyy (HH-mm-ss)"
+
+# Create text file with list of new work items created during this script run.
 $newWorkItems | Out-File -FilePath ".\Reports\New-Work-Items-$currentTime.txt"
+
+# Print info on how many work items were created and where the list of newly created work items can be found.
 Write-Output "$itemCount work items were created in the $organizationName Azure DevOps."
+Write-Output "List of new work items can be found in .\Reports\New-Work-Items-$currentTime.txt."
 
 # Keeps script window from automatically closing upon finish in case you want to review the output.
 Read-Host -Prompt "Press Enter to exit"
