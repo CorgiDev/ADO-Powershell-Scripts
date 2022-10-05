@@ -69,7 +69,6 @@ $workItems | ForEach-Object {
 }
 
 $itemCount = $newWorkItems.Count
-
 $currentTime = get-date -f "MM-dd-yyyy (HH-mm-ss)"
 
 # Create text file with list of new work items created during this script run.
